@@ -5,11 +5,22 @@
     <title></title>
   </head>
   <body>
-    <h1>Weather live in your city</h1>
-    <p>Введите ваш город</p>
-    <form method="post", action=''>
-      <input type="text"></input>
-      <input type="submit"></input>
-    </form>
+    <div>
+      <h1>Weather live in your city</h1>
+      <p>Введите ваш город</p>
+      <form method="post", action=''>
+        {% csrf_token %}
+        {{ form.name }}
+        <input type="submit">
+      </form>
+    </div>
+      <h1>info</h1>
+      {% for info in all_info %}
+        <div>
+          <b>Город:</b> {{ info.city }}
+          <b>Температура:</b> {{ info.temp }}
+          <!--<img scr="https://openweathermap.org/img/w/{{info.icon}}.png" alt="{{ info.icon }}"> -->
+        </div>
+      {% endfor %}
   </body>
 </html>
