@@ -3,24 +3,42 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <style>
+    h1{
+      font-family: Arial, Helvetica, Verdana, sans-serif; /* Гарнитура шрифта */
+      font-size: 150%; /* Размер текста */
+      font-weight: lighter; /* Светлое начертание */
+    }
+    P{
+      font-family: Verdana, sans-serif;
+      font-size: 80%;
+      font-weight: light;
+    }
+    </style>
   </head>
   <body>
     <div>
-      <h1>Weather live in your city</h1>
-      <p>Введите ваш город</p>
+      <h1>Погода в городе</h1>
+      <p>Введите название вашего города на английском</p>
       <form method="post", action=''>
         {% csrf_token %}
         {{ form.name }}
-        <input type="submit">
+        <br>
+        <br>
+        <input type="submit" value="Узнать погоду">
       </form>
     </div>
-      <h1>info</h1>
+      {% if all_info %}
+        <h1>Результат</h1>
+      {% endif %}
       {% for info in all_info %}
         <div>
           <b>Город:</b> {{ info.city }}
           <b>Температура:</b> {{ info.temp }}
-          <!--<img scr="https://openweathermap.org/img/w/{{info.icon}}.png" alt="{{ info.icon }}"> -->
+          <img src="https://openweathermap.org/img/w/{{info.icon}}.png" alt="{{ info.icon }}">
         </div>
+        <br>
+        <br>
       {% endfor %}
   </body>
 </html>
