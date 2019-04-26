@@ -1,10 +1,11 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from .models import City
 import requests
 from .forms import CityForm
 
 def index(request):
+
+
     appid = "e7bd3e1ff50813c8ebed438bf8b64080"
     url = "https://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid=" + appid
 
